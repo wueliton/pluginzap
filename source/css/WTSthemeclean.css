@@ -1,0 +1,240 @@
+.wtsIcon {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+.wtsIcon img {
+    max-height: 60px;
+}
+.wtsIcon .notificationWTS {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-style: normal;
+    margin-left: 3px;
+    margin-top: 3px;
+    font-family: sans-serif;
+}
+
+.windowWTS {
+    font-family: sans-serif;
+    position: fixed;
+    right: 30px;
+    bottom: 110px;
+    border-radius: 10px;
+    box-shadow: 0px 20px 30px -15px #CCC;
+    font-smooth: always;
+}
+
+.windowWTS header {
+    background: #095e54;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px 10px 0px 0px;
+    color:white;
+}
+.windowWTS header .profileWTS {
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+}
+.profileWTS img {
+    display: block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: white;
+}
+.profileWTS .onlineWTS {
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    background: #14c656;
+    border-radius: 50%;
+    margin-left: 36px;
+    margin-top: -10px;
+    border: 2px solid #095e54;
+}
+.windowWTS header .infoWTS {
+    display: flex;
+    align-items: center;
+}
+.infoWTS span {
+    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+}
+
+.windowWTS .containerWTS {
+    padding: 20px;
+    background: url(../img/bg-wts.jpg) #e5dcd5 no-repeat;
+    background-size: cover;
+}
+
+#chatWTS {
+    position: relative;
+    z-index: 2;
+}
+.msgWTS {
+    padding: 15px 15px 5px 15px;
+    border-radius: 0px 9px 9px 9px;
+    box-shadow: 0px 2px 4px #AAA;
+    display: inline-block;
+    background: white;
+}
+.msgWTS:before {
+    content: '';
+    position: absolute;
+    border-top: 0px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-right: 10px solid white;
+    margin-left: -22px;
+    margin-top: -15px;
+}
+.msgWTS .nameWTS {
+    color: #AAA;
+    font-size: 13px;
+}
+.msgWTS .messageWTS {
+    padding: 5px 0px;
+    margin: 0px;
+    font-size: 15px;
+}
+.msgWTS .timeWTS {
+    margin-top: 5px;
+    color: #AAA;
+    font-size: 12px;
+    display: block;
+    text-align: right;
+    margin-right: -8px;
+}
+
+.sendWTS {
+    padding: 15px;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+}
+.sendWTS .buttonWTS {
+    padding: 10px 15px;
+    display: block;
+    background: #14c656;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.5s;
+}
+.sendWTS .buttonWTS:hover {
+    background: #47e481;
+}
+.sendWTS .buttonWTS img {
+    height: 15px;
+    margin-right: 5px;
+    margin-bottom: -2px;
+}
+
+.formWTS {
+    background: #E2E2E2;
+    border-radius: 10px;
+    padding: 20px 15px;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.formWTS input[type="text"],.formWTS input[type="email"],.formWTS input[type="tel"] {
+    padding: 10px 15px;
+    border: 0px;
+    border-radius: 25px;
+    outline:none;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.formWTS input + input {
+    margin-top: 5px;
+}
+.formWTS textarea {
+    padding: 10px 15px;
+    border: 0px;
+    border-radius: 15px;
+    outline:none;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-family: sans-serif;
+    resize: none;
+}
+.formWTS input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 15px;
+    display: block;
+    background: #14c656;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background 0.5s;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+}
+.formWTS input[type="submit"]:hover {
+    background: #47e481;
+}
+
+.fadeOut {
+    animation: easyOut 0.5s forwards;
+}
+
+@keyframes easyOut {
+    from {display:block;opacity: 1}
+    to {display: none;opacity: 0;position: relative;z-index: -1}
+}
+
+@media (min-width: 451px) {
+    .windowWTS {
+        animation: showWindow 0.5s forwards;
+        animation-delay: 2s;
+        max-height: 0px;
+        overflow:hidden;
+    }
+    .visibility {
+        display: none;
+    }
+}
+@media (max-width: 450px) {
+    .wtsIcon {
+        right: 20px;
+    }
+    .windowWTS {
+        right: 10px;
+        width: calc(100% - 20px);
+        display: none;
+    }
+    .windowWTS #chatWTS {
+        z-index: -1;
+    }
+    .visibility {
+        display: block;
+    }
+}
+@keyframes showWindow {
+    from {width:0px;max-height:0px;opacity: 0}
+    to {width:300px;max-height: 400px;opacity: 1;overflow:auto;}
+}

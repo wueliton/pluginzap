@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Seu novo Código de Acesso</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Muli:wght@200;400;700;900&display=swap');
+		.logo {display: block;margin:auto;}
+		h1 {font-family: "Muli";font-weight: 900;color: #2F4858;letter-spacing: -2px;}
+		p.subtitle {font-size: 1.2em;}
+        .copyLink {background: #EEE;padding: 1px 5px;border-radius: 3px;}
+	</style>
+</head>
+<body bgcolor="#d9f3f6" style="background:rgb(0,175,195,0.15);font-family: 'Muli', sans-serif;">
+    <div style="padding: 30px;">
+	<img src="http://localhost/gerencia-zap/source/images/logo.png" align="center" class='logo' alt="">
+        <table align="center" style="display: block;max-width: 800px;background: white;border-radius: 10px;margin-top: 30px;margin-bottom: 70px;">
+            <tr>
+                <td style="padding: 30px 60px;">
+                    <h1 style='font-family: "Muli";font-weight: 900!important;color: #2F4858;letter-spacing: -2px;'>Olá, {User}!</h1>
+                    <p class="subtitle">Você pediu e nós enviamos, aqui está seu novo link para cadastro de uma nova senha.</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 30px 60px;text-align:center">
+                    <!--[if mso]>
+                    <table cellpadding="0" cellspacing="0" align="center">
+                        <tr>
+                            <td style="text-decoration: none;color:white;background:#00BA85;padding: 15px 30px;">
+                    <![endif]-->
+                                <a href="http://localhost/gerencia-zap/newpass?{urlValidate}" target="_blank" style="text-decoration: none;color:white;background:#00BA85;border-radius: 25px;padding: 15px 30px;">
+                                    <span>Criar nova Senha</span>
+                                </a>
+                    <!--[if mso]>
+                            </td>
+                        </tr>
+                    </table>
+                    <![endif]-->
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 30px 60px;">
+                    <p>Se não conseguir clicar no link, copie e cole em seu navegador: <span class="copyLink">http://localhost/gerencia-zap/newpass?{urlValidate}</span></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

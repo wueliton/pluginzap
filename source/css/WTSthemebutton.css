@@ -1,0 +1,178 @@
+.wtsIcon {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    text-decoration: none;
+}
+.wtsIcon img {
+    max-height: 60px;
+}
+.wtsIcon .notificationWTS {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-style: normal;
+    margin-left: 3px;
+    margin-top: 3px;
+    font-family: sans-serif;
+}
+.wtsIcon .textNtWTS {
+	font-family: sans-serif;
+	background: #14c656;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 20px;
+	font-size: 13px;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	position: absolute;
+	width: 162px;
+	margin-left: -180px;
+	margin-top: 10px;
+}
+.wtsIcon .textNtWTS:before {
+	content: '';
+    position: absolute;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent; 
+    border-left: 10px solid #14c656;
+    margin-left: 145px;
+    margin-top: 3px;
+}
+
+.windowWTS {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	background: rgb(0,0,0,0.3);
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-family: sans-serif;
+	display: none;
+}
+.visibility {
+	display: block;
+	display: flex;
+}
+
+.closeWTS {
+	position: absolute;
+	font-style: normal;
+	margin-left: 240px;
+	margin-top: 15px;
+	font-family: sans-serif;
+	padding: 10px;
+	cursor: pointer;
+	color: #DDD;
+}
+.closeWTS:hover {
+	color: white;
+}
+
+.windowWTS .formWTS {
+	background: white;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	background: #E2E2E2;
+	min-width: 280px;
+}
+.windowWTS form {
+	padding: 15px;
+}
+.windowWTS header {
+    background: #095e54;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px 10px 0px 0px;
+    color:white;
+}
+.windowWTS header .profileWTS {
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+}
+.profileWTS img {
+    display: block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: white;
+}
+.profileWTS .onlineWTS {
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    background: #14c656;
+    border-radius: 50%;
+    margin-left: 36px;
+    margin-top: -10px;
+    border: 2px solid #095e54;
+}
+.windowWTS header .infoWTS {
+    display: flex;
+    align-items: center;
+}
+.infoWTS span {
+    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+}
+.windowWTS .formWTS input {
+	display: block;
+}
+.formWTS input[type="text"],.formWTS input[type="email"],.formWTS input[type="tel"] {
+    padding: 10px 15px;
+    border: 0px;
+    border-radius: 25px;
+    outline:none;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.formWTS input + input {
+    margin-top: 5px;
+}
+.formWTS textarea {
+    padding: 10px 15px;
+    border: 0px;
+    border-radius: 15px;
+    outline:none;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-family: sans-serif;
+    resize: none;
+}
+.formWTS input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 15px;
+    display: block;
+    background: #14c656;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background 0.5s;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+}
+.formWTS input[type="submit"]:hover {
+    background: #47e481;
+}
