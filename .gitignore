@@ -1,1 +1,3 @@
-includes/Crud/
+./includes/Crud/
+./includes/Payment/
+includes/Crud/bdConnection.php
