@@ -60,10 +60,10 @@ include("includes/head.php");
 			<h2>Assine e receba 1 mês para testar</h2>
 			<p>E só pague à partir do Segundo Mês de uso! Assim você garante uma lista completa de Contatos e não perde mais nenhuma Mensagem!</p>
 			<form action="javascript:void(0)" method="post" class="form" id="signature-form">
-				<div><input type="text" placeholder="Seu Nome" name="name" ></div>
-				<div><input type="email" placeholder="Seu melhor E-mail" name="email" ></div>
-				<div><input type="tel" placeholder="Seu WhatsApp" name="tel" class="maskWhatsApp" ></div>
-				<div><button type="submit">ASSINAR</button></div>
+				<div><input type="text" placeholder="Seu Nome" name="nome" required></div>
+				<div><input type="email" placeholder="Seu melhor E-mail" name="email" required></div>
+				<div><input type="tel" placeholder="Seu WhatsApp" name="whatsapp" class="maskWhatsApp" required></div>
+				<div><button type="submit" id="joinBtn">ASSINAR</button></div>
 			</form>
 		</div>
 	</section>

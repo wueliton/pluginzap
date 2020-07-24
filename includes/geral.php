@@ -7,8 +7,6 @@ $ramo = "Aplicação Web";
 
 $cidade = "São Paulo";
 
-
-
 function sanitize_output($buffer) {
     $search = array(
         '/\>[^\S ]+/s',

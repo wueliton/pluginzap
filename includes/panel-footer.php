@@ -28,19 +28,19 @@
                         <td>Status</td>
                     </tr>
                     <tr>
-                        <td id="planTitle">Carregando...</td>
-                        <td>R$39,99</td>
-                        <td id="planStatus">Carregando...</td>
+                        <td id="planTitle"></td>
+                        <td id="planValue"></td>
+                        <td id="planStatus"></td>
                     </tr>
                 </table>
             </div>
             <p>
                 Para alterações do plano, entre em contato com nosso suporte <strong>suporte@gerenciazap.com.br</strong>.
             </p><br>
-            <div class="hr"><span>Pagar com</span></div>
+            <div class="hr"><span>Cartão cadastrado</span></div>
             <div class="btn-cards">
                 <a href="javascript:void(0)" class="btn-card creditCard active">•••• •••• <?=$User->getCreditCardCode();?></a>
-                <a href="javascript:void(0)" class="btn-card" id="addCardBtn">Alterar Cartão</a>
+                <!--<a href="javascript:void(0)" class="btn-card" id="addCardBtn">Alterar Cartão</a>-->
             </div>
             <div class="addCard">
                 <label for="">
@@ -65,7 +65,7 @@
                 </label>
             </div>
             <p>O meio de pagamento será utilizado para ativação automática das assinaturas em seu cadastro a cada ciclo de utilização da aplicação.</p><br>
-            <p class="text-center"><button class="btn-primary">Salvar Dados</button></p>
+            <!--<p class="text-center"><button class="btn-primary">Salvar Dados</button></p>-->
         </div>
     </div>
     <div class="windowAll" id="profile">

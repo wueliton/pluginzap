@@ -28,7 +28,7 @@ $enterprises = new \Includes\Enterprises\Enterprise();
 						$allResult[$key] = $allResult[$key]+$data['contagem'];
 					}
 				}
-
+				
 				$allResultData = implode(",",$allResult);
 				$sumAll = array_sum($allResult);
 				$labels = implode(",",$labels);
@@ -37,9 +37,11 @@ $enterprises = new \Includes\Enterprises\Enterprise();
 				<div class="graph"><canvas id="myChart"></canvas></div>
 			</div>
 			<div>
+				<h2><?=$enterprises->todayMessages()?></h2>
+				<p>Mensagens Hoje</p>
 				<h2><?=$sumAll?></h2>
-				<p>Mensagens Recebidas</p>
-				<h2>250</h2>
+				<p>Total de Mensagens Recebidas</p>
+				<h2><?=$enterprises->getContactsNumber()?></h2>
 				<p>Contatos</p>
 			</div>
 		</div>

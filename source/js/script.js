@@ -52,9 +52,21 @@ $(document).ready(function() {
 	});
 
 	$("#signature-form").submit(function() {
-		var data = $(this).serialize();
+		var form = $(this).serialize();
+		loading("#joinBtn",$("#joinBtn").text());
+		$("#signature-form input[name=email]").removeClass("error");
 
-		window.location.href = "getstart";
+		$.post("responses/join.php",form,function(response) {
+			console.log(response);
+			loading("#joinBtn");
+			if(response.status==true) {
+				notification("Lhe enviamos um e-mail para que você possa concluir seu cadastro!",true);
+			}
+			else {
+				$("#signature-form input[name=email]").addClass("error");
+				notification(response.message);
+			}
+		})		
 	})
 
 	$("#email").focus();
@@ -91,9 +103,10 @@ $(document).ready(function() {
 		$("#assign").fadeIn();
 		$.post("responses/planData.php",function(response) {
 			if(response.status==true) {
-				$("#planTitle").text(response.message.name);
-				planStatus = response.message.status;
-				date = new Date(response.message.date);
+				$("#planTitle").text(response.message.plano.name);
+				planStatus = response.message.plano.status;
+				date = new Date(response.message.plano.date);
+				valor = response.message.valor;
 				actualDate = new Date();
 				dateDiff = Math.abs(actualDate.getTime() - date.getTime());
 				days = Math.ceil(dateDiff / (1000 * 60 * 60 * 24));
@@ -119,6 +132,11 @@ $(document).ready(function() {
 				}
 
 				$("#planStatus").text(planStatus);
+				$("#planValue").text("R$ "+valor);
+
+				if(planStatus=="Meio de Pagamento Inválido.") {
+					window.location.href = "cancelled.php";
+				}
 			}
 			else {
 				notification(response.message);
@@ -167,33 +185,40 @@ $(document).ready(function() {
 
 		$.post("responses/checkPlan.php",function(response) {
 			if(response.status==true) {
+				console.log(response);
+				plano = response.message.plan;
 				if(response.message.msg=="Limite Atingido") {
-					plano = response.message.plan;
-					planoTxt = (plano=="1") ? "Inicial" : "Pro";
-					inicial = (plano=="1" || plano=="3") ? "disabled" : "";
-					inicialTxt = (plano=="1") ? "Plano Atual" : "Plano inferior";
-					pro = (plano=="3") ? "disabled" : "";
-					proTxt = (plano=="3") ? "Plano Atual" : "Escolher Plano";
-					proLink = (plano=="3") ? "javascript:void(0)" : "javascript:changePlan(2)";
-					descountText = (plano=="3") ? "" : "<span class=\"descount\">R$39,99</span>";
-					dataAssinatura = new Date();
-					proximaParcela = new Date(response.message.proximaParcela);
-					dateDiff = Math.abs(proximaParcela.getTime() - dataAssinatura.getTime());
-					days = Math.ceil(dateDiff / (1000 * 60 * 60 * 24));
-					descount = (plano=="1") ? 15.90 : 39.99;
-					descount = descount/30;
-					descount = descount*days;
-					descountSignature = Math.round(descount);
-					proValue = (plano=="3") ? 39.99 : 39.90 - descountSignature;
-					proValue = proValue.toFixed(2);
-					proValueComma = proValue.toString().replace(".",",");
-					enterpriseValue = 69.90 - descountSignature;
-					enterpriseValue = enterpriseValue.toFixed(2);
-					enterpriseValueComma = enterpriseValue.toString().replace(".",",");
+					console.log(response);
+					if(plano!="10") {
+						planoTxt = (plano=="1") ? "Inicial" : "Pro";
+						inicial = (plano=="1" || plano=="3") ? "disabled" : "";
+						inicialTxt = (plano=="1") ? "Plano Atual" : "Plano inferior";
+						pro = (plano=="3") ? "disabled" : "";
+						proTxt = (plano=="3") ? "Plano Atual" : "Escolher Plano";
+						proLink = (plano=="3") ? "javascript:void(0)" : "javascript:changePlan(2)";
+						descountText = (plano=="3") ? "" : "<span class=\"descount\">R$39,99</span>";
+						dataAssinatura = new Date();
+						proximaParcela = new Date(response.message.proximaParcela);
+						dateDiff = Math.abs(proximaParcela.getTime() - dataAssinatura.getTime());
+						days = Math.ceil(dateDiff / (1000 * 60 * 60 * 24));
+						descount = (plano=="1") ? 15.90 : 39.99;
+						descount = descount/30;
+						descount = descount*days;
+						descountSignature = Math.round(descount);
+						proValue = (plano=="3") ? 39.99 : 39.90 - descountSignature;
+						proValue = proValue.toFixed(2);
+						proValueComma = proValue.toString().replace(".",",");
+						enterpriseValue = 69.90 - descountSignature;
+						enterpriseValue = enterpriseValue.toFixed(2);
+						enterpriseValueComma = enterpriseValue.toString().replace(".",",");
 
-					descountComma = descountSignature.toString().replace(".",",");
+						descountComma = descountSignature.toString().replace(".",",");
 
-					dataHTML = '<h1>Quer adicionar novas Empresas?</h1><p>Atualmente seu Plano é o <strong>'+planoTxt+'</strong>, que permite a integração de <strong>'+plano+' Empresa(s)</strong>.</p><p class="aviso">Realizando a mudança de plano hoje, você receberá um desconto promocional de <strong>R$'+descountComma+',00</strong> na taxa de adesão do plano.</p><div class="plans"><div class="'+inicial+'"><h1>Iniciante</h1><h2>1 Site</h2><p>Desejo instalar somente em um Site.</p><h2>R$15,90</h2><span>Taxa de Adesão</span><br/><a href="javascript:void(0)" class="btn-primary '+inicial+'">'+inicialTxt+'</a></div><div class="scale '+pro+'"><h1>Pro</h1><h2>3 Sites</h2><p>Possuo 3 sites e desejo instalar em todos.</p>'+descountText+'<h2>R$'+proValueComma+'</h2><span>Taxa de Adesão</span><br/><a href="'+proLink+'" class="btn-primary '+pro+'">'+proTxt+'</a></div><div><h1>Enterprise</h1><h2>10 Sites</h2><p>Possuo 10 sites e desejo instalar em todos.</p><span class="descount">R$ 69,99</span><h2>R$'+enterpriseValueComma+'</h2><span>Taxa de Adesão</span><br/><a href="javascript:changePlan(3)" class="btn-primary">Escolher Plano</a></div></div><div class="why"><p class="aviso">*Desconto aplicável somente para taxa de adesão, as demais mensalidades do plano escolhido serão cobradas integralmente, sem aplicação descontos.<br/>**Plano Enterprise: após cobrança da taxa de adesão, serão cobrados mensalmente o valor de R$ 69,99.</p></div>';
+						dataHTML = '<h1>Quer adicionar novas Empresas?</h1><p>Atualmente seu Plano é o <strong>'+planoTxt+'</strong>, que permite a integração de <strong>'+plano+' Empresa(s)</strong>.</p><p class="aviso">Realizando a mudança de plano hoje, você receberá um desconto promocional de <strong>R$'+descountComma+',00</strong> na taxa de adesão do plano.</p><div class="plans"><div class="'+inicial+'"><h1>Iniciante</h1><h2>1 Site</h2><p>Desejo instalar somente em um Site.</p><h2>R$15,90</h2><span>Taxa de Adesão</span><br/><a href="javascript:void(0)" class="btn-primary '+inicial+'">'+inicialTxt+'</a></div><div class="scale '+pro+'"><h1>Pro</h1><h2>3 Sites</h2><p>Possuo 3 sites e desejo instalar em todos.</p>'+descountText+'<h2>R$'+proValueComma+'</h2><span>Taxa de Adesão</span><br/><a href="'+proLink+'" class="btn-primary '+pro+'">'+proTxt+'</a></div><div><h1>Enterprise</h1><h2>10 Sites</h2><p>Possuo 10 sites e desejo instalar em todos.</p><span class="descount">R$ 69,99</span><h2>R$'+enterpriseValueComma+'</h2><span>Taxa de Adesão</span><br/><a href="javascript:changePlan(3)" class="btn-primary">Escolher Plano</a></div></div><div class="why"><p class="aviso">*Desconto aplicável somente para taxa de adesão, as demais mensalidades do plano escolhido serão cobradas integralmente, sem aplicação descontos.<br/>**Plano Enterprise: após cobrança da taxa de adesão, serão cobrados mensalmente o valor de R$ 69,99.</p></div>';
+					}
+					else {
+						dataHTML = '<h1>Limite Atingido</h1><p>Você atingiu o limite máximo de Empresas que podem ser adicionadas em cada conta.</p>';
+					}
 				}
 				else {
 					dataHTML = '<h1>Nova Empresa</h1><p></p><div class="tabs"><a href="javascript:void(0)" class="active" data-tab="dadosNewEmpresa">Dados da Empresa</a><a href="javascript:void(0)" data-tab="themeSelectNewEnterprise">Tema</a><a href="javascript:void(0)" data-tab="copyPaste">Integração</a></div><div class="formWindow tab active" id="dadosNewEmpresa"><form action="javascript:addEnterpriseData()" id="addEnterpriseData"> <div><div class="imageProfile"><img src="" alt=""><div class="preview-pane"></div><a href="javascript:void(0)" id="changePicture">Alterar Imagem</a><input type="file" name="image" id="image_upload" hidden><input type="text" name="imageName" hidden></div><div><label for=""><span>* Nome da sua Empresa</span><input type="text" placeholder="Nome Empresa" name="empresa"></label><label for=""><span>* Seu Site</span><input type="text" name="site" placeholder="www.example.com.br"></label><label for="whatsapp"><span>* WhatsApp</span><input type="text" placeholder="(19) 00000-0000" name="whatsapp" id="whatsapp"></label></div><input type="text" name="id" id="enterpriseId" hidden></div></form> <p class="text-right"><button type="submit" id="saveEnterpriseData" class="btn-primary">Próximo</button></p></div><div class="tab" id="themeSelectNewEnterprise"><div><div class="theme themeOne" id="theme1"><img src="source/images/themeone.gif" alt=""></div><div class="theme themeTwo" id="theme2"><img src="source/images/themetwo.gif" alt=""></div></div><div id="messagePers"><h3>Mensagem Personalizada</h3><p class="aviso">Este tema permite utilizar uma Mensagem Personalizada, digite abaixo:</p><textarea name="mensagem" class="persoMsg" placeholder="" id="" cols="30" rows="2">Olá, tudo bem?Como podemos ajudar?</textarea></div><p class="text-right"><a href="javascript:void(0)" class="btn-primary">Gerar Código de Integração</a></p></div><div class="tab" id="copyPaste"><p>Seu botão está configurado, agora só falta adicionar o código abaixo em todas as páginas que você deseja que o botão apareça.</p><br/><h3>Copie o código abaixo</h3><div class="code"><pre id="codeUrl"></pre></div><br/><p class="aviso">Seu código de integração não muda, após inserir em seu site, você não precisará mais alterá-lo.</p><br/><br/><h2>Insira em seu Site</h2>';
@@ -561,6 +586,7 @@ function loadHome() {
 		id = $(this).attr("data-id");
 		$.post("responses/getEnterpriseData.php",{id: id},function(response) {
 			data = response.message;
+			console.log(data);
 			$("#enterpriseDetails h1").text(data[0]['nome']);
 			$("#enterpriseDetails input[name=nome]").val(data[0]['nome']);
 			$("#enterpriseDetails input[name=site]").val(data[0]['site']);
@@ -590,7 +616,7 @@ function loadHome() {
 				$("#enterpriseDetails .theme").removeClass("active");
 				$("#enterpriseDetails #theme"+idTheme).addClass("active");
 			}
-			emBase64 = btoa("Tema:2|IdEnterprise:"+id);
+			emBase64 = btoa("Tema:2|IdEnterprise:"+data[0]['id']);
 			emBase64 = emBase64.replace(/=/g,"");
 			$("#enterpriseDetails #codeUrl").text('<script src="http://localhost/gerencia-zap/application/application.js?code='+emBase64+'"><\/script>');
 
@@ -1095,8 +1121,8 @@ function sendPaymentChange() {
 				$("#activateSignature input[name=cep]").addClass("error");
 			}
 			notification(response.message.msg);
+			loading("#paymentBtn");
 		}
-		loading("#paymentBtn");
 	})
 }
 
@@ -1132,12 +1158,16 @@ function logon() {
 		else {
 			if(response.message.id==1) {
 				$("#loginData input[name=email]").addClass("error");
+				notification(response.message.msg);
+			}
+			else if(response.message.id==2) {
+				$("#loginData input[name=senha]").addClass("error");
+				notification(response.message.msg);
 			}
 			else {
-				$("#loginData input[name=senha]").addClass("error");
+				notification(response.message);
 			}
 			loading("#logonBtn");
-			notification(response.message.msg);
 		}
 	})
 }
@@ -1156,7 +1186,7 @@ function recoverPass() {
 
 	$.post("responses/recoverpass.php",data,function(response) {
 		if(response.status==true) {
-			$("#emailAccount").val($("#recoverPass input[name=email]").val());
+			$("#emailAccount").text($("#recoverPass input[name=email]").val());
 			$("#emailConfirm").fadeIn();
 		}
 		else {
@@ -1190,7 +1220,7 @@ function changePass() {
 function changePlan(id) {
 	plano = (id==2) ? "Pro" : "Enterprise";
 
-	dataHTML = '<h1>Alteração de Assinatura</h1><p>Nova assinatura para o <strong>Plano '+plano+'</strong>.</p><p class="aviso">Para alterar sua assinatura, é necessário confirmar os dados de pagamento.</p><br/><br/><form action="javascript:sendChangePlan();" id="changePlan"> <div> <div class="twoColumns"> <label for="cpfTitular"> <span>CPF do Titular</span> <input type="text" name="cpf" id="cpfTitular" placeholder="000.000.000-00" class="maskCPF" required> </label> <label for="dataDeNascimento"> <span>Data de Nascimento Titular</span> <input type="text" name="dataDeNascimento" id="dataDeNascimento" placeholder="00/00/00000" class="bornDate" required> </label> </div><label for="numeroCartao"> <span>Número do Cartão</span> <input type="text" name="numeroCartao" id="numeroCartao" placeholder="0000 0000 0000 0000" class="creditCard creditCardMask" required> </label> <label for="nome"> <span>Nome Impresso no Cartão</span> <input type="text" name="nome" id="nome" placeholder="Ex: PEDRO R. SILVA" required> </label> <div class="twoColumns"> <label for="vencimento"> <span>Validade</span> <input type="text" name="vencimento" id="vencimento" placeholder="Ex: 12/20" class="expirateCard" required> </label> <label for="cvv"> <span>Código de Segurança (CVV)</span> <input type="text" name="cvv" id="cvv" placeholder="Ex: 123" class="cvvCard" required> </label> </div></div><input type="text" name="token" hidden><input type="text" name="cardBrand" hidden><p class="text-right"><button type="submit" class="btn-primary" id="startUse">Pagar agora</button></p></form><div class="why"> <p class="aviso">Porque estamos solicitando os dados de Pagamento?</p><p>Os dados do cartão utilizado para pagamento não são salvos em nosso banco de dados, por esse motivo, para que você realize qualquer alteração na Assinatura, será necessário confirmar os dados de pagamento.</p></div>';
+	dataHTML = '<h1>Alteração de Assinatura</h1><p>Nova assinatura para o <strong>Plano '+plano+'</strong>.</p><p class="aviso">Para alterar sua assinatura, é necessário confirmar os dados de pagamento.</p><br/><br/><form action="javascript:sendChangePlan();" id="changePlan"> <div> <div class="twoColumns"> <label for="cpfTitular"> <span>CPF do Titular</span> <input type="text" name="cpf" id="cpfTitular" placeholder="000.000.000-00" class="maskCPF" required> </label> <label for="dataDeNascimento"> <span>Data de Nascimento Titular</span> <input type="text" name="dataDeNascimento" id="dataDeNascimento" placeholder="00/00/00000" class="bornDate" required> </label> </div><label for="numeroCartao"> <span>Número do Cartão</span> <input type="text" name="numeroCartao" id="numeroCartao" placeholder="0000 0000 0000 0000" class="creditCard creditCardMask" required> </label> <label for="nome"> <span>Nome Impresso no Cartão</span> <input type="text" name="nome" id="nome" placeholder="Ex: PEDRO R. SILVA" required> </label> <div class="twoColumns"> <label for="vencimento"> <span>Validade</span> <input type="text" name="vencimento" id="vencimento" placeholder="Ex: 12/20" class="expirateCard" required> </label> <label for="cvv"> <span>Código de Segurança (CVV)</span> <input type="text" name="cvv" id="cvv" placeholder="Ex: 123" class="cvvCard" required> </label> </div></div><input type="text" name="token" hidden><input type="text" name="cardBrand" hidden><input type="text" name="senderHash" hidden/><input type="text" name="plan" value="'+id+'" hidden><p class="text-right"><button type="submit" class="btn-primary" id="startUse">Pagar agora</button></p></form><div class="why"> <p class="aviso">Porque estamos solicitando os dados de Pagamento?</p><p>Os dados do cartão utilizado para pagamento não são salvos em nosso banco de dados, por esse motivo, para que você realize qualquer alteração na Assinatura, será necessário confirmar os dados de pagamento.</p></div>';
 
 	$("#addEnterprise .conteudoWindow").html(dataHTML);
 
@@ -1233,6 +1263,10 @@ function sendChangePlan() {
 	$("#changePlan input[name=vencimento]").removeClass("error");
 	$("#changePlan input[name=cvv]").removeClass("error");
 	error = "";
+
+	PagSeguroDirectPayment.onSenderHashReady(function(response) {
+		$("input[name=senderHash]").val(response.senderHash);
+	})
 
 	PagSeguroDirectPayment.createCardToken({
 		cardNumber: cardNumber,
@@ -1282,30 +1316,36 @@ function sendChangePlanPayment() {
 
 	$.post("responses/changePlan.php",dataForm,function(response) {
 		loading("#startUse");
-		/*if(response.status==true) {
-			
+		if(response.status==true) {
+			$("#addEnterprise").fadeOut("fast",function() {
+				$(".addOption").click();
+			});
 		}
 		else {
-			
-			code = response.message.code;
-			if(code==10003) {
-				$("#payForm input[name=email]").addClass("error");
-			}
-			else if(code==17078) {
-				$("#payForm input[name=vencimento]").addClass("error");
-			}
-			else if(code==19002 || code==19003) {
-				$("#payForm input[name=logradouro]").addClass("error");
-			}
-			else if(code==61011) {
-				$("#payForm input[name=cpf]").addClass("error");
-			}
-			else if(code==19001) {
-				$("#payForm input[name=cep]").addClass("error");
-			}
+			if(response.message.code) {
+				code = response.message.code;
+				if(code==10003) {
+					$("#payForm input[name=email]").addClass("error");
+				}
+				else if(code==17078) {
+					$("#payForm input[name=vencimento]").addClass("error");
+				}
+				else if(code==19002 || code==19003) {
+					$("#payForm input[name=logradouro]").addClass("error");
+				}
+				else if(code==61011 || code==53017) {
+					$("#payForm input[name=cpf]").addClass("error");
+				}
+				else if(code==19001) {
+					$("#payForm input[name=cep]").addClass("error");
+				}
 
-			notification(response.message.msg);
-		}*/
+				notification(response.message.msg);
+			}
+			else {
+				notification(response.message);
+			}
+		}
 	})
 }
 
@@ -1374,4 +1414,8 @@ function changePassword() {
 			loading("#savePassChange");
 		})
 	}
+}
+
+function homeInscription() {
+
 }

@@ -61,7 +61,7 @@ Como podemos ajudar?</textarea>
 				<h3>Copie o código abaixo</h3>
 				<div class="code">
 				<pre id="codeUrl"></pre>
-				<a href="" class="copyCode"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBpZD0iYm9sZCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMnB4Ij48cGF0aCBkPSJtNCA2Ljc1YzAtMi42MTkgMi4xMzEtNC43NSA0Ljc1LTQuNzVoOS4xMzNjLS4zMjktMS4xNTEtMS4zNzgtMi0yLjYzMy0yaC0xMS41Yy0xLjUxNyAwLTIuNzUgMS4yMzMtMi43NSAyLjc1djE1LjVjMCAxLjUxNyAxLjIzMyAyLjc1IDIuNzUgMi43NWguMjV6IiBmaWxsPSIjMDAwMDAwIi8+PHBhdGggZD0ibTIwLjI1IDRoLTExLjVjLTEuNTE3IDAtMi43NSAxLjIzMy0yLjc1IDIuNzV2MTQuNWMwIDEuNTE3IDEuMjMzIDIuNzUgMi43NSAyLjc1aDExLjVjMS41MTcgMCAyLjc1LTEuMjMzIDIuNzUtMi43NXYtMTQuNWMwLTEuNTE3LTEuMjMzLTIuNzUtMi43NS0yLjc1em0tMiAxN2gtNy41Yy0uNDE0IDAtLjc1LS4zMzYtLjc1LS43NXMuMzM2LS43NS43NS0uNzVoNy41Yy40MTQgMCAuNzUuMzM2Ljc1Ljc1cy0uMzM2Ljc1LS43NS43NXptMC00aC03LjVjLS40MTQgMC0uNzUtLjMzNi0uNzUtLjc1cy4zMzYtLjc1Ljc1LS43NWg3LjVjLjQxNCAwIC43NS4zMzYuNzUuNzVzLS4zMzYuNzUtLjc1Ljc1em0wLTMuNWgtNy41Yy0uNDE0IDAtLjc1LS4zMzYtLjc1LS43NXMuMzM2LS43NS43NS0uNzVoNy41Yy40MTQgMCAuNzUuMzM2Ljc1Ljc1cy0uMzM2Ljc1LS43NS43NXptMC00aC03LjVjLS40MTQgMC0uNzUtLjMzNi0uNzUtLjc1cy4zMzYtLjc1Ljc1LS43NWg3LjVjLjQxNCAwIC43NS4zMzYuNzUuNzVzLS4zMzYuNzUtLjc1Ljc1eiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPgo=" alt="Copiar" title="Copiar Código" /></a></div><br/>
+				</div><br/>
 				<p class="aviso">Seu código de integração não muda, após inserir em seu site, você não precisará mais alterá-lo.</p><br/><br/>
 				<h2>Insira em seu Site</h2>
 			</div>

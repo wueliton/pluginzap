@@ -6,6 +6,7 @@ class Enterprise {
     private $bdConnection;
     private $dir = "../uploads/";
     private $table = "enterprise";
+    private $allEnterprises = "";
 
     function __construct() {
         $this->bdConnection = new \Includes\Crud\bdConnection();
@@ -322,6 +323,7 @@ class Enterprise {
         $id = $_SESSION['id_usuario'];
         $allEnterprises = $this->bdConnection->select($this->table,array("id_usuario"=>$id),"id,nome",true);
         $result = array();
+        $this->allEnterprises = $allEnterprises;
 
         foreach($allEnterprises as $key=>$enterprise) {
             $data = $this->bdConnection->select("report",array("identifier"=>"AND","idEnterprise"=>array($enterprise['id']),"mes"=>date("n"),"ano"=>date("Y")),"contagem,url",true,false,array("field"=>"contagem DESC"));
@@ -329,6 +331,32 @@ class Enterprise {
         }
 
         return $result;
+     }
+
+     function getContactsNumber() {
+        $allEnterprises = $this->allEnterprises;
+        $ids = array();
+
+        foreach($allEnterprises as $enterprise) {
+            $ids[] = $enterprise['id'];
+        }
+
+        $ids = implode(",",$ids);
+        $result = $this->bdConnection->select("contato",array("identifier"=>"OR","idEnterprise"=>array($ids)," AND MONTH(data)"=>"07"),"COUNT(*)");
+        return $result['COUNT(*)'];
+     }
+
+     function todayMessages() {
+        $allEnterprises = $this->allEnterprises;
+        $ids = array();
+
+        foreach($allEnterprises as $enterprise) {
+            $ids[] = $enterprise['id'];
+        }
+
+        $ids = implode(",",$ids);
+        $result = $this->bdConnection->select("mensagem",array("identifier"=>"OR","idEnterprise"=>array($ids)," AND MONTH(data)"=>"07"),"COUNT(*)");
+        return $result['COUNT(*)'];
      }
 
      function exclude($id) {

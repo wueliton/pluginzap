@@ -14,13 +14,18 @@ $planDetails = $user->enterprisesLimit();
         echo json_response(200,$diff);
     }
     else {
-        $userData = $user->getUserData();
-        $pay->getTransaction($userData['preApprovalCode']);
-        $data = $pay->getCallback();
-        $list = (array)$data->paymentOrders;
-        $lastPayment = array_key_first($list);
-        $pay->getMemberShip($userData['preApprovalCode']);
-        $userPlan = $pay->getCallback();
+        if($planDetails=="10") {
+            echo json_response(200,array("msg"=>"Limite Atingido","plan"=>10));
+        }
+        else {
+            $userData = $user->getUserData($_SESSION['id_usuario']);
+            $pay->getTransaction($userData['preApprovalCode']);
+            $data = $pay->getCallback();
+            $list = (array)$data->paymentOrders;
+            $lastPayment = array_key_first($list);
+            $pay->getMemberShip($userData['preApprovalCode']);
+            $userPlan = $pay->getCallback();
 
-        echo json_response(200,array("msg"=>"Limite Atingido","plan"=>$planDetails,"dataAssinatura"=>$userPlan->lastEventDate,"proximaParcela"=>$list[$lastPayment]->schedulingDate));
+            echo json_response(200,array("msg"=>"Limite Atingido","plan"=>$planDetails,"dataAssinatura"=>$userPlan->lastEventDate,"proximaParcela"=>$list[$lastPayment]->schedulingDate));
+        }
     }

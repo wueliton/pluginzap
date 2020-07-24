@@ -100,36 +100,41 @@ class User {
     function logon($email,$senha) {
         $email = str_replace(" ","",$email);
 
-        $data = $this->bdConnection->select($this->table,array("email"=>$email),"senha,id,preApprovalCode");
+        $data = $this->bdConnection->select($this->table,array("email"=>$email),"senha,id,preApprovalCode,verificationcode");
 
         if(!empty($data)) {
-            if(password_verify($senha,$data["senha"])) {
-                $signatureStatus = new \Includes\Payment\Payment();
-                $signatureStatus->getMemberShip($data['preApprovalCode']);
-                $signature = $signatureStatus->getCallback();
-
-                if($signature->status=="PAYMENT_METHOD_CHANGE") {
-                    $actualDate = new \DateTime();
-                    $actualDate = $actualDate->getTimestamp();
-
-                    $_SESSION["id_usuario"] = $data["id"];
-                    $_SESSION["time_session"] = $actualDate;
-                    $_SESSION["signature"] = $signature->status;
-                    
-                    echo \json_response(200,"Login realizado com sucesso");
+            if($data["verificationcode"]=="verified") {
+                if(password_verify($senha,$data["senha"])) {
+                    $signatureStatus = new \Includes\Payment\Payment();
+                    $signatureStatus->getMemberShip($data['preApprovalCode']);
+                    $signature = $signatureStatus->getCallback();
+    
+                    if($signature->status=="PAYMENT_METHOD_CHANGE") {
+                        $actualDate = new \DateTime();
+                        $actualDate = $actualDate->getTimestamp();
+    
+                        $_SESSION["id_usuario"] = $data["id"];
+                        $_SESSION["time_session"] = $actualDate;
+                        $_SESSION["signature"] = $signature->status;
+                        
+                        echo \json_response(200,"Login realizado com sucesso");
+                    }
+                    else {
+                        $actualDate = new \DateTime();
+                        $actualDate = $actualDate->getTimestamp();
+    
+                        $_SESSION["id_usuario"] = $data["id"];
+                        $_SESSION["time_session"] = $actualDate;
+                        
+                        echo \json_response(200,"Login realizado com sucesso");
+                    }
                 }
                 else {
-                    $actualDate = new \DateTime();
-                    $actualDate = $actualDate->getTimestamp();
-
-                    $_SESSION["id_usuario"] = $data["id"];
-                    $_SESSION["time_session"] = $actualDate;
-                    
-                    echo \json_response(200,"Login realizado com sucesso");
+                    echo \json_response(400,array("id"=>2,"msg"=>"Senha incorreta."));
                 }
             }
             else {
-                echo \json_response(400,array("id"=>2,"msg"=>"Senha incorreta."));
+                echo \json_response(400,"Sua conta ainda não foi verificada, solicite um novo email de confirmação.");
             }
         }
         else {
@@ -290,7 +295,8 @@ class User {
         }
     }
 
-    function getUserData() {
+    function getUserData($id="") {
+        $id = $id !="" ? $id : $_SESSION['id'];
         $data = $this->bdConnection->select($this->table,array("id" => $_SESSION['id_usuario']),'nome,whatsapp,email,id,preApprovalCode');
         return $data;
     }
@@ -315,7 +321,7 @@ class User {
 
     function getPlanDetails($id=null) {
         $id = $id!=null ? $id : $_SESSION['id_usuario'];
-        $data = $this->bdConnection->select($this->table,array("id"=>$id),"nome,email,preApprovalCode,verificationcode,cardNumber");
+        $data = $this->bdConnection->select($this->table,array("id"=>$id),"nome,email,preApprovalCode,verificationcode,cardNumber,plano");
         $this->userData = $data;
         
         $approvalCode = $data['preApprovalCode'];
@@ -324,6 +330,14 @@ class User {
         $this->userPlan = $payment->getCallback();
 
         return $this->userPlan;
+    }
+
+    function getValorPlano($id=null) {
+        $id = $id!=null ? $id : $_SESSION['id_usuario'];
+        $data = $this->bdConnection->select($this->table,array("id"=>$id),"nome,email,preApprovalCode,verificationcode,cardNumber,plano");
+        $pay = new \Includes\Payment\Payment();
+        $plano = $pay->getPlan($data['plano']);
+        return $plano['plan_price'];
     }
 
     function getCreditCardCode() {
@@ -390,6 +404,15 @@ class User {
         if($this->verifyUser()==true) {
             $enterpriseData = new \Includes\Enterprises\Enterprise;
             return $enterpriseData->getEnterprises($this->id);
+        }
+    }
+
+    function changePlanCode($id,$preApprovalCode,$planCode,$cardNumber) {
+        if($this->bdConnection->update($this->table,array("id"=>$id,"preApprovalCode"=>$preApprovalCode,"plano"=>$planCode,"cardNumber"=>$cardNumber))) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

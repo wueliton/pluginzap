@@ -5,7 +5,7 @@ date_default_timezone_set('America/Sao_Paulo');
 require "../includes/autoload.php";
 
 $mensagem = new Includes\Messages\Messages($_POST['idEnterprise'],$_POST['url'],$_POST['name'],$_POST['whatsapp'],$_POST['mail'],$_POST['message']);
-if($mensagem->saveMessage()==false) {
+if($mensagem->saveMessage()==true) {
     $mensagemClient = urlencode($_POST['message']);
     $numero = $mensagem->getNumber();
     header("Location: https://api.whatsapp.com/send?phone=+55{$numero}&text={$mensagemClient}");

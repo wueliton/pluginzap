@@ -41,11 +41,11 @@ class Messages {
             $this->numberEnterprise = $userData['whatsapp'];
             $signature = $planDetails->getPlanDetails($userData['id_usuario']);
             $status = $signature->status;
-            if($status!="ACTIVE") {
-                return false;
+            if($status=="ACTIVE") {
+                return true;
             }
             else {
-                return true;
+                return false;
             }
         }
     }
