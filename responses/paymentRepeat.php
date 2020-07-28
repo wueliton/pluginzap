@@ -9,8 +9,8 @@ $logradouro = explode(",",$_POST['logradouro']);
 $rua = $logradouro[0];
 $numero = preg_replace('/\D/', '',$logradouro[1]);
 $email = $_POST['email'];
-$email = explode("@",$email);//SANDBOX
-$email = $email[0]."@sandbox.pagseguro.com.br";//SANDBOX
+//$email = explode("@",$email);//SANDBOX
+//$email = $email[0]."@sandbox.pagseguro.com.br";//SANDBOX
 
 $plan[1] = [
     'plan_id' => 2,
