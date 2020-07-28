@@ -1144,6 +1144,9 @@ table tr.numbers td {
   display: none;
   padding: 15px 0px;
 }
+#messagePers .aviso {
+  margin-bottom: 14px;
+}
 .theme {
   display: inline-block;
   width: 200px;
@@ -1244,6 +1247,33 @@ table tr.numbers td {
 .enterprisesList label input {
   display: inline-block;
   width: auto;
+}
+
+.question {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  background: #d6fbff;
+  font-size: 10pt;
+  padding-left: 40px;
+  position: relative;
+}
+.question a {
+  color: #07628e;
+  font-weight: bold;
+}
+.question:before {
+  content: "?";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #00AFC3;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 700;
+  padding: 5px;
+  left: 8px;
 }
 
 

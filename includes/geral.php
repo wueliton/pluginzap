@@ -4,8 +4,20 @@ $nomeEmpresa = "PluginZap";
 $author = "Wule Agência Digital";
 $slogan = "Não perca mais nenhuma mensagem";
 $ramo = "Aplicação Web";
+$description = "";
+$keywords = "";
 
+$geoLatitude = "";
+$geoLongitude = "";
+$canonical = "";
+$ramo = "";
+$tel = "";
+$cidade = "";
+$creditos = "";
 $cidade = "São Paulo";
+$url = "";
+$card = "";
+
 
 function sanitize_output($buffer) {
     $search = array(

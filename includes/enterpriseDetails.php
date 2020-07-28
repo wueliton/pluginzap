@@ -31,7 +31,7 @@
 							</label>
 							<label for="">
 								<span>* WhatsApp</span>
-								<input type="text" placeholder="(19) 00000-0000" name="whatsapp">
+								<input type="text" placeholder="(19) 00000-0000" class="maskWhatsApp" name="whatsapp">
 							</label>
 						</div>
 						<input type="text" name="id" id="enterpriseId" hidden>
@@ -58,12 +58,16 @@ Como podemos ajudar?</textarea>
 			</div>
 			<div class="tab" id="copyPaste">
 				<p>Seu botão está configurado, agora só falta adicionar o código abaixo em todas as páginas que você deseja que o botão apareça.</p><br/>
-				<h3>Copie o código abaixo</h3>
+				<h3>Copie o código abaixo e insira em seu Site</h3>
 				<div class="code">
 				<pre id="codeUrl"></pre>
 				</div><br/>
-				<p class="aviso">Seu código de integração não muda, após inserir em seu site, você não precisará mais alterá-lo.</p><br/><br/>
-				<h2>Insira em seu Site</h2>
+				<div class="question">
+				Não sabe como inserir em seu site?<br/>
+				<a href="/blog/como-adicionar-pluginzap-site" target="_blank">Veja como inserir em seu Site</a><br/>
+				ou entre em contato com nosso suporte.
+				</div><br/>
+				<p class="aviso">Seu código de integração não muda, após inserir em seu site, você não precisará mais alterá-lo.</p><br/>
 			</div>
 		</div>
 	</div>

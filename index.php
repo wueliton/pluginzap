@@ -124,5 +124,14 @@ include("includes/head.php");
 		</div>
 	</footer>
 	<script src="source/js/script.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-019V70SFVV"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-019V70SFVV');
+	</script>
+	<script src="https://www.pluginzap.com/application/application.php?code=VGVtYToyfElkRW50ZXJwcmlzZTo1"></script>
 </body>
 </html>

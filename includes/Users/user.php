@@ -260,6 +260,11 @@ class User {
                     }*/
             }
         }
+        else {
+            if($internal!="login") {
+                header("Location: login");
+            }
+        }
     }
 
     function cancellPlan() {

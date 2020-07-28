@@ -4,7 +4,7 @@ $cssFiles = "source/css/login.css";
 include("includes/head.php");
 
 $verifyLogin = new Includes\Users\User();
-$verifyLogin->verifySession();
+$verifyLogin->verifySession("login");
 ?>
 <body>
     <div class="fluid-container bg-comments">

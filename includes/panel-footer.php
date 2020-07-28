@@ -94,5 +94,13 @@
     </div>
     <script src="source/js/croppie.js"></script>
     <script src="source/js/script.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-019V70SFVV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-019V70SFVV');
+    </script>
 </body>
 </html>

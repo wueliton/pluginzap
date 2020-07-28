@@ -144,7 +144,7 @@ $pay = new \Includes\Payment\Payment; ?>
                 <div class="hr"><span>Endereço de Cobrança</span></div>
                 <div class="clientData">
                     <label for="logradouro">
-                        <span>Rua, nº</span>
+                        <span>Endereço, nº</span>
                         <input type="text" name="logradouro" id="logradouro" placeholder="Endereço, Nº" required>
                     </label>
                     <div class="twoColumns">
@@ -178,7 +178,7 @@ $pay = new \Includes\Payment\Payment; ?>
                 <p class="text-right"><button type="submit" class="btn-primary" id="startUse">Começar</button></p>
                 <div class="why">
                     <p class="aviso">Porque estamos solicitando os dados de Pagamento?</p>
-                    <p>Você poderá utilizar a ferramenta pelo período de 30 dias de forma gratuita, mas, para garantir a continuidade do serviço, solicitamos os dados de pagamento, porém, você poderá realizar o cancelamento do serviço a qualquer momento nesse período de teste sem nenhuma cobrança.</p>
+                    <p>Você poderá utilizar a ferramenta pelo período de 30 dias de forma gratuita, mas para garantir a continuidade do serviço, solicitamos os dados de pagamento, porém, você poderá realizar o cancelamento do serviço a qualquer momento nesse período de teste sem nenhuma cobrança.</p>
                 </div>
             </form>
         </div>

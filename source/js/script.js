@@ -21,19 +21,31 @@ $.expr[":"].contains = $.expr.createPseudo(function(arg) {
 
 descountSignature = "";
 
-if($('.toggle-nav').length) {
-	document.querySelector('.toggle-nav').onclick = function() {
-		document.querySelector('nav ul').classList.toggle("active");
-		if($('nav ul').hasClass("active")) {
-			$('html,body').animate({scrollTop: 0},'slow');
-		}
-	}
-}
-
 var resize = null;
 
 $(document).ready(function() {
-	$(".maskWhatsApp").inputmask("(99) 9999-99999");
+	if($('.toggle-nav').length) {
+		document.querySelector('.toggle-nav').onclick = function() {
+			document.querySelector('nav ul').classList.toggle("active");
+			if($('nav ul').hasClass("active")) {
+				$('html,body').animate({scrollTop: 0},'slow');
+			}
+		}
+	}
+	
+	$(".maskWhatsApp").inputmask('(99) 99999-9999');
+	$(".maskWhatsApp").focusout(function() {
+		number = $(this).val().replace("_","");
+		if(number.length < 15) {
+			$(this).inputmask('(99) 9999-9999');
+		}
+		else {
+			$(this).inputmask('(99) 99999-9999');
+		}
+	})
+	$(".maskWhatsApp").focus(function() {
+		$(this).inputmask('(99) 99999-9999');
+	})
 	$(".maskCPF").inputmask("999.999.999-99");
 	$(".creditCardMask").inputmask("9999 9999 9999 9999");
 	$(".expirateCard").inputmask("99/99");
@@ -221,7 +233,7 @@ $(document).ready(function() {
 					}
 				}
 				else {
-					dataHTML = '<h1>Nova Empresa</h1><p></p><div class="tabs"><a href="javascript:void(0)" class="active" data-tab="dadosNewEmpresa">Dados da Empresa</a><a href="javascript:void(0)" data-tab="themeSelectNewEnterprise">Tema</a><a href="javascript:void(0)" data-tab="copyPaste">Integração</a></div><div class="formWindow tab active" id="dadosNewEmpresa"><form action="javascript:addEnterpriseData()" id="addEnterpriseData"> <div><div class="imageProfile"><img src="" alt=""><div class="preview-pane"></div><a href="javascript:void(0)" id="changePicture">Alterar Imagem</a><input type="file" name="image" id="image_upload" hidden><input type="text" name="imageName" hidden></div><div><label for=""><span>* Nome da sua Empresa</span><input type="text" placeholder="Nome Empresa" name="empresa"></label><label for=""><span>* Seu Site</span><input type="text" name="site" placeholder="www.example.com.br"></label><label for="whatsapp"><span>* WhatsApp</span><input type="text" placeholder="(19) 00000-0000" name="whatsapp" id="whatsapp"></label></div><input type="text" name="id" id="enterpriseId" hidden></div></form> <p class="text-right"><button type="submit" id="saveEnterpriseData" class="btn-primary">Próximo</button></p></div><div class="tab" id="themeSelectNewEnterprise"><div><div class="theme themeOne" id="theme1"><img src="source/images/themeone.gif" alt=""></div><div class="theme themeTwo" id="theme2"><img src="source/images/themetwo.gif" alt=""></div></div><div id="messagePers"><h3>Mensagem Personalizada</h3><p class="aviso">Este tema permite utilizar uma Mensagem Personalizada, digite abaixo:</p><textarea name="mensagem" class="persoMsg" placeholder="" id="" cols="30" rows="2">Olá, tudo bem?Como podemos ajudar?</textarea></div><p class="text-right"><a href="javascript:void(0)" class="btn-primary">Gerar Código de Integração</a></p></div><div class="tab" id="copyPaste"><p>Seu botão está configurado, agora só falta adicionar o código abaixo em todas as páginas que você deseja que o botão apareça.</p><br/><h3>Copie o código abaixo</h3><div class="code"><pre id="codeUrl"></pre></div><br/><p class="aviso">Seu código de integração não muda, após inserir em seu site, você não precisará mais alterá-lo.</p><br/><br/><h2>Insira em seu Site</h2>';
+					dataHTML = '<h1>Nova Empresa</h1><p></p><div class="tabs"><a href="javascript:void(0)" class="active" data-tab="dadosNewEmpresa">Dados da Empresa</a><a href="javascript:void(0)" data-tab="themeSelectNewEnterprise">Tema</a><a href="javascript:void(0)" data-tab="copyPaste">Integração</a></div><div class="formWindow tab active" id="dadosNewEmpresa"><form action="javascript:addEnterpriseData()" id="addEnterpriseData"> <div><div class="imageProfile"><img src="" alt=""><div class="preview-pane"></div><a href="javascript:void(0)" id="changePicture">Alterar Imagem</a><input type="file" name="image" id="image_upload" hidden><input type="text" name="imageName" hidden></div><div><label for=""><span>* Nome da sua Empresa</span><input type="text" placeholder="Nome Empresa" name="empresa"></label><label for=""><span>* Seu Site</span><input type="text" name="site" placeholder="www.example.com.br"></label><label for="whatsapp"><span>* WhatsApp</span><input type="text" placeholder="(19) 00000-0000" name="whatsapp" id="whatsapp"></label></div><input type="text" name="id" id="enterpriseId" hidden></div></form> <p class="text-right"><button type="submit" id="saveEnterpriseData" class="btn-primary">Próximo</button></p></div><div class="tab" id="themeSelectNewEnterprise"><div><div class="theme themeOne" id="theme1"><img src="source/images/themeone.gif" alt=""></div><div class="theme themeTwo" id="theme2"><img src="source/images/themetwo.gif" alt=""></div></div><div id="messagePers"><h3>Mensagem Personalizada</h3><p class="aviso">Este tema permite utilizar uma Mensagem Personalizada, digite abaixo:</p><textarea name="mensagem" class="persoMsg" placeholder="" id="" cols="30" rows="2">Olá, tudo bem?Como podemos ajudar?</textarea></div><p class="text-right"><a href="javascript:void(0)" class="btn-primary">Gerar Código de Integração</a></p></div><div class="tab" id="copyPaste"><p>Seu botão está configurado, agora só falta adicionar o código abaixo em todas as páginas que você deseja que o botão apareça.</p><br/><h3>Copie o código abaixo e insira em seu Site</h3><div class="code"><pre id="codeUrl"></pre></div><br/><div class="question">Não sabe como inserir em seu site?<br/><a href="/blog/como-adicionar-pluginzap-site" target="_blank">Veja como inserir em seu Site</a><br/>ou entre em contato com nosso suporte.</div><br/><p class="aviso">Seu código de integração não muda, após inserir em seu site, você não precisará mais alterá-lo.</p>';
 				}
 				$("#addEnterprise .conteudoWindow").html(dataHTML);
 				prepareLayout();
@@ -591,7 +603,7 @@ function loadHome() {
 			$("#enterpriseDetails input[name=nome]").val(data[0]['nome']);
 			$("#enterpriseDetails input[name=site]").val(data[0]['site']);
 			$("#enterpriseDetails input[name=whatsapp]").val(data[0]['whatsapp']);
-			$("#enterpriseDetails #dadosEmpresa img").attr("src","uploads/"+data[0]['imagem']);
+			$("#enterpriseDetails #dadosEmpresa img").attr("src","uploads/"+data[0]['imagem']+"?"+new Date().getTime());
 			$("#enterpriseDetails #enterpriseId").val(id);
 			$("#enterpriseDetails input[name=imageName]").val(data[0]['imagem']);
 			$("#enterpriseDetails .persoMsg").val(data[0]['mensagem']);
@@ -618,7 +630,7 @@ function loadHome() {
 			}
 			emBase64 = btoa("Tema:2|IdEnterprise:"+data[0]['id']);
 			emBase64 = emBase64.replace(/=/g,"");
-			$("#enterpriseDetails #codeUrl").text('<script src="http://localhost/gerencia-zap/application/application.js?code='+emBase64+'"><\/script>');
+			$("#enterpriseDetails #codeUrl").text('<script src="https://www.pluginzap.com/application/application.php?code='+emBase64+'"><\/script>');
 
 			$("#enterpriseDetails").fadeIn();
 		})
@@ -729,7 +741,19 @@ function prepareLayout() {
 		reader.readAsDataURL(this.files[0]);
 	});
 
-	$("#dadosNewEmpresa #whatsapp").inputmask("(99) 9999-99999");
+	$("#dadosNewEmpresa #whatsapp").inputmask('(99) 99999-9999');
+	$("#dadosNewEmpresa #whatsapp").focusout(function() {
+		number = $(this).val().replace("_","");
+		if(number.length < 15) {
+			$(this).inputmask('(99) 9999-9999');
+		}
+		else {
+			$(this).inputmask('(99) 99999-9999');
+		}
+	})
+	$("#dadosNewEmpresa #whatsapp").focus(function() {
+		$(this).inputmask('(99) 99999-9999');
+	})
 
 	$("#dadosNewEmpresa #saveEnterpriseData").click(function() {
 		resize.croppie('result', {
@@ -763,7 +787,7 @@ function prepareLayout() {
 						$(".homeOptions").prepend('<a href="javascript:void(0)" data-id="'+id+'" class="option"><h2>'+$('#dadosNewEmpresa input[name=empresa]').val()+'</h2><p>'+$('#dadosNewEmpresa input[name=site]').val()+'</p><span class="statusOk">Configurando...</span></a>');
 						emBase64 = btoa("Tema:2|IdEnterprise:"+id);
 						emBase64 = emBase64.replace(/=/g,"");
-						$("#addEnterprise #codeUrl").text('<script src="http://localhost/gerencia-zap/application/application.js?code='+emBase64+'"><\/script>');
+						$("#addEnterprise #codeUrl").text('<script src="https://www.pluginzap.com/application/application.php?code='+emBase64+'"><\/script>');
 
 						$("#addEnterprise .closeAll").click(function() {
 							document.location.reload(true);
