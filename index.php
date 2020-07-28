@@ -15,6 +15,7 @@ include("includes/head.php");
 				<li><a href="#signature">Assinatura</a></li>
 				<li><a href="#how-to">Integração</a></li>
 				<li><a href="#support">Suporte</a></li>
+				<li><a href="#support">Blog</a></li>
 				<li><a href="login">Login</a></li>
 				<li><a href="join" class="btn-testar">Ganhe 1 mês para Testar</a></li>
 			</ul>

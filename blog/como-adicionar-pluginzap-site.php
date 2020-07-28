@@ -79,6 +79,7 @@ include("../includes/headerBlog.php");
         <p>Se durante o processo de integração você encontrar qualquer dificuldade, poderá sempre contar com nosso Suporte Técnico!</p>
 
         <div class="assine">
+            <img src="images/pluginzap-join.png" alt="Ganhe 1 mês grátis">
             <h2>Ganhe 1 mês grátis para testar uma Ferramenta Completa!</h2>
             <a href="../join" class="btn-primary">Começar agora</a>
         </div>

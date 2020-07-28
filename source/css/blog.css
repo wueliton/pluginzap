@@ -153,6 +153,13 @@
       background-image: -o-linear-gradient(top right, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
       background-image: linear-gradient(to bottom left, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
       margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+  }
+  div.assine img {
+      position: absolute;
+      right: 0px;
+      top: 20px;
   }
   div.assine h2 {
       color: white;
@@ -201,6 +208,9 @@
       .assine h2 {
           font-size: 20pt;
           line-height: 21pt;
+      }
+      div.assine img {
+          display: none;
       }
       nav ul>ul {
           display: none;
