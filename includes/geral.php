@@ -14,15 +14,25 @@ $author = "Wule Agência Digital";
 $slogan = "Não perca mais nenhuma mensagem";
 $ramo = "Aplicação Web";
 
-$geoLatitude = "";
-$geoLongitude = "";
-$canonical = "";
-$ramo = "";
-$tel = "";
-$cidade = "";
+$geoLatitude = "-23421459";
+$geoLongitude = "-46551149,2323";
+$endereco = "Viela Particular, 56";
+$tel = "11940043902";
+$cidade = "Guarulhos";
 $creditos = "";
 $cidade = "São Paulo";
+$email = "suporte@pluginzap.com";
+$uf = "SP";
+$cep = "07075-171";
+$logoSchema = "source/images/card.jpg";
 $card = "";
+$urlPagina 			= explode("C:/", $_SERVER['PHP_SELF']);
+$urlPagina 			= end($urlPagina);
+$urlPagina			= explode("/", $urlPagina);
+$urlPagina 			= end($urlPagina);
+$canonical 			= $url . $urlPagina;
+$canonical 			= str_replace('.php', '', $canonical);
+$imagem 			= str_replace('.php', '.jpg', $urlPagina);
 
 
 function sanitize_output($buffer) {
