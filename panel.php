@@ -20,7 +20,8 @@ $pay = new \Includes\Payment\Payment;
 	<?php include("includes/panel-navbar.php"); ?>
 	<div class="homeOptions">
 		<?php
-		foreach ($enterpriseData as $enterprise) {
+		if(isset($enterpriseData) && !empty($enterpriseData)) {
+			foreach ($enterpriseData as $enterprise) {
 		?>
 			<a href="javascript:void(0)" data-id="<?= $enterprise['id']; ?>" class="option">
 				<h2><?= $enterprise['nome']; ?></h2>
@@ -32,6 +33,7 @@ $pay = new \Includes\Payment\Payment;
 				<?php } ?>
 			</a>
 		<?php
+			}
 		}
 		?>
 		<a href="javascript:void(0)" class="addOption">
