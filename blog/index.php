@@ -18,7 +18,7 @@ include("../includes/headerBlog.php");
     <article>
         <h1><a href="como-adicionar-pluginzap-site">Como Adicionar o PluginZap em meu Site?</a></h1>
         <div class="postDetails"><a href="#" class="category">PluginZap Ajuda</a> <span class="date"> Postado em <a href="#">28/07/2020</a></span></div>
-        <img src="images/como-adicionar-pluginzap-site.jpg" alt="Como Adicionar o PluginZap em meu Site?" class="principal-image" title="Como Adicionar o PluginZap em meu Site?">
+        <a href="como-adicionar-pluginzap-site"><img src="images/como-adicionar-pluginzap-site.jpg" alt="Como Adicionar o PluginZap em meu Site?" class="principal-image" title="Como Adicionar o PluginZap em meu Site?"></a>
         <p>Desenvolvemos o PluginZap para tornar mais fácil receber contatos em seu Site, e não podiamos deixar de simplificar também a intergração com seu Site, para começar a utilizar seu script do PluginZap é preciso adicionar apenas uma linha de código nas páginas em que você deseja receber mensagens...</p>
         <a href="como-adicionar-pluginzap-site" class="btn-primary">Continuar lendo</a>
     </article>
