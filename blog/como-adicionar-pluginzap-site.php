@@ -7,7 +7,7 @@ include("../includes/headerBlog.php");
 ?>
 <nav>
     <ul>
-        <li><a href="<?php echo $url?>"><img src="../source/images/logo.png" alt="PluginZap"></a><a href="" class="blog">BLOG</a></li>
+        <li><a href="<?php echo $url?>"><img src="../source/images/logo.png" alt="PluginZap"></a><a href="<?=$url?>blog/" class="blog">BLOG</a></li>
         <ul>
             <li><a href="../login">Login</a></li>
             <li><a href="../join" class="btn-testar">GANHE 1 MÊS PARA TESTAR</a></li>
