@@ -229,4 +229,8 @@
       div.assine {
           padding: 35px;
       }
+
+      .posts h1 {
+          font-size: 25pt;
+      }
   }
