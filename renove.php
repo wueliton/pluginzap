@@ -1,6 +1,8 @@
 <?php
 $title = "Problema com sua Assinatura";
 $cssFiles = "source/css/panel.css";
+$description = "";
+$keywords = "";
 $page = "panel";
 include("includes/head-panel.php");
 $pay = new \Includes\Payment\Payment;

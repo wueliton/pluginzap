@@ -1,23 +1,24 @@
 <?php
 $title = "Como Adicionar o PluginZap em meu Site?";
 $cssFiles = "../source/css/blog.css";
+$description = "O PluginZap pode ser adicionado ao seu Site HTML, Wordpress, Wix, PHP, e outras linguagens, ensinamos nesse tutorial a inserir em seu site.";
+$keywords = "Melhor plugin em {$title},Melhor aplicativo em {$title},Adicionar o WhatsApp em meu Site,Melhor preço de {$title}";
 include("../includes/headerBlog.php");
 ?>
 <nav>
     <ul>
-        <li><a href="<?php echo $url?>"><img src="../source/images/logo.png" alt="PluginZap"></a></li>
-        <li><a href="" class="blog">BLOG</a></li>
-    </ul>
-    <ul class="rightMenu">
-        <li><a href="">Login</a></li>
-        <li><a href="">GANHE 1 MÊS PARA TESTAR</a></li>
+        <li><a href="<?php echo $url?>"><img src="../source/images/logo.png" alt="PluginZap"></a><a href="" class="blog">BLOG</a></li>
+        <ul>
+            <li><a href="../login">Login</a></li>
+            <li><a href="../join" class="btn-testar">GANHE 1 MÊS PARA TESTAR</a></li>
+        </ul>
     </ul>
 </nav>
 <img src="images/como-adicionar-pluginzap-site.jpg" alt="<?=$title?>" class="principal-image" title="<?=$title?>">
 <article>
     <div class="content">
         <h1><?=$title?></h1>
-        <div class="postDetails"><a href="" class="category">PluginZap Ajuda</a> <span class="date"> Postado em <a href="">28/07/2020</a></span></div>
+        <div class="postDetails"><a href="#" class="category">PluginZap Ajuda</a> <span class="date"> Postado em <a href="#">28/07/2020</a></span></div>
         <p>Desenvolvemos o PluginZap para tornar mais fácil receber contatos em seu Site, e não podiamos deixar de simplificar também a intergração com seu Site, para começar a utilizar seu script do PluginZap é preciso adicionar apenas uma linha de código nas páginas em que você deseja receber mensagens, e te ajudamos a realizar essa integração com as principais plataformas de Sites:</p>
         <h2>Adicionar ao meu Site HTML</h2>
         <p>Para adicionar seu Script do PluginZap em um Site desenvolvido em HTML, você precisará abrir todos os arquivos em que deseja receber mensagens e adicionar seu Script de Integração no fim de cada página, antes do fechamento da tag <code><&#47;body></code>.</p>

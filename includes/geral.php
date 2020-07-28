@@ -3,7 +3,7 @@
 $pastaEPagina = explode("/",$_SERVER['PHP_SELF']);
 $pastaDominio = "";
 for($i=0; $i < count($pastaEPagina); $i++){
-	if(substr_count($pastaEPagina[$i], ".") == 0){
+	if(substr_count($pastaEPagina[$i], ".") == 0 && $pastaEPagina[$i]!="blog"){
 		$pastaDominio .= $pastaEPagina[$i]."/";
 	}
 }
@@ -13,8 +13,6 @@ $nomeEmpresa = "PluginZap";
 $author = "Wule Agência Digital";
 $slogan = "Não perca mais nenhuma mensagem";
 $ramo = "Aplicação Web";
-$description = "";
-$keywords = "";
 
 $geoLatitude = "";
 $geoLongitude = "";
@@ -24,7 +22,6 @@ $tel = "";
 $cidade = "";
 $creditos = "";
 $cidade = "São Paulo";
-$url = "";
 $card = "";
 
 

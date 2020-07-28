@@ -1,6 +1,8 @@
 <?php
 $title = "Não perca mais nenhuma";
 $cssFiles = "source/css/home.css";
+$description = "";
+$keywords = "";
 include("includes/head.php");
  ?>
 <body>

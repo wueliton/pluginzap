@@ -2,6 +2,8 @@
 $title = "Painel";
 $cssFiles = "source/css/panel.css";
 $page = "panel";
+$description = "";
+$keywords = "";
 include("includes/head-panel.php");
 $enterpriseData = $User->showEnterprises();
 $pay = new \Includes\Payment\Payment;

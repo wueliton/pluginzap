@@ -1,6 +1,8 @@
 <?php
 $title = "Recuperar Senha";
 $cssFiles = "source/css/login.css";
+$description = "";
+$keywords = "";
 include("includes/head.php");
 
 $verifyLogin = new Includes\Users\User();

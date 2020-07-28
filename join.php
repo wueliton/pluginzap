@@ -1,6 +1,8 @@
 <?php
 $title = "Cadastre-se";
 $cssFiles = "source/css/login.css";
+$description = "";
+$keywords = "";
 include("includes/head.php");
 
 $verifyLogin = new Includes\Users\User();

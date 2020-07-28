@@ -30,6 +30,16 @@
     background: #00BA85;
     box-shadow: 0px 15px 20px -15px #68EDCB;
   }
+  .btn-primary:hover,.btn-testar:hover {
+    background: #00BA85;
+    box-shadow: 0px 15px 20px -15px #68EDCB;
+  }
+  .btn-testar {
+    background: #25D366;
+    color: white;
+    border-radius: 30px;
+    transition: box-shadow 0.5s, background 0.5s;
+  }
   nav {
       padding: 15px 25px;
       width: 100%;
@@ -37,7 +47,8 @@
   nav ul {
       display: flex;
       align-items: center;
-      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
   }
   nav ul li {
       display: inline-block;
@@ -49,9 +60,18 @@
         font-weight: 700;
         font-size: 15px;
         margin-left: -50px;
+        float: right;
   }
-  ul.rightMenu {
+  nav ul>ul {
+    align-self: center;
     align-items: flex-end;
+  }
+  nav ul>ul a {
+    padding: 20px 15px;
+    color: #00818F;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 15px;
   }
   .principal-image {
       display: block;
@@ -181,5 +201,11 @@
       .assine h2 {
           font-size: 20pt;
           line-height: 21pt;
+      }
+      nav ul>ul {
+          display: none;
+      }
+      div.assine {
+          padding: 35px;
       }
   }

@@ -1,6 +1,8 @@
 <?php
 $title = "Mensagens";
 $cssFiles = "source/css/panel.css";
+$description = "";
+$keywords = "";
 $page = "report";
 include("includes/head-panel.php");
 $enterprises = new \Includes\Enterprises\Enterprise();
