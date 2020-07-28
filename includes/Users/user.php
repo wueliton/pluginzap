@@ -135,6 +135,13 @@ class User {
                     }
                 }
                 else {
+                    $actualDate = new \DateTime();
+                    $actualDate = $actualDate->getTimestamp();
+                    $dataCode = base64_encode($actualDate."|".$email);
+                    $dataCode = str_replace("=","",$dataCode);
+
+                    header("Location: getstart?{$dataCode}");
+
                     echo \json_response(400,"Você ainda não selecionou um plano, selecione um plano para continuar.");
                 }
             }
