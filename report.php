@@ -23,17 +23,22 @@ $enterprises = new \Includes\Enterprises\Enterprise();
 				$labels = array();
 				$allResult = array();
 
-				foreach($allData as $key=>$enterprise) {
-					$labels[] = "'".$key."'";
-					$allResult[$key] = 0;
-					foreach($enterprise as $data) {
-						$allResult[$key] = $allResult[$key]+$data['contagem'];
+				if(!empty($allData)) {
+					foreach($allData as $key=>$enterprise) {
+						$labels[] = "'".$key."'";
+						$allResult[$key] = 0;
+						foreach($enterprise as $data) {
+							$allResult[$key] = $allResult[$key]+$data['contagem'];
+						}
 					}
+					
+					$allResultData = implode(",",$allResult);
+					$sumAll = array_sum($allResult);
+					$labels = implode(",",$labels);
 				}
-				
-				$allResultData = implode(",",$allResult);
-				$sumAll = array_sum($allResult);
-				$labels = implode(",",$labels);
+				else {
+					$sumAll = 0;
+				}
 			?>
 			<div>
 				<div class="graph"><canvas id="myChart"></canvas></div>
@@ -48,11 +53,12 @@ $enterprises = new \Includes\Enterprises\Enterprise();
 			</div>
 		</div>
 		<?php
-			foreach($allData as $key=>$enterprise) {
-				if($allResult[$key] > 0) {
-					$labelsGraph = array();
-					$page = array();
-					$nameChart = str_replace(" ","",$key);
+			if(!empty($allData)) {
+				foreach($allData as $key=>$enterprise) {
+					if($allResult[$key] > 0) {
+						$labelsGraph = array();
+						$page = array();
+						$nameChart = str_replace(" ","",$key);
 	?>
 		<div class="contentPage active">
 			<div class="list">
@@ -110,6 +116,7 @@ $enterprises = new \Includes\Enterprises\Enterprise();
 				</script>
 		</div>
 	<?php
+					}
 				}
 			}
 
