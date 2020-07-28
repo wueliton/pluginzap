@@ -161,6 +161,15 @@ class Enterprise {
         */
     }
 
+    function delete($idEnterprise) {
+        if($this->bdConnection->delete($this->table,array("id"=>$idEnterprise))) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     function getEnterprises($idClient) {
         $exists = $this->bdConnection->select($this->table,array("id_usuario"=>$idClient),"id,nome,site,btn_template",true);
 

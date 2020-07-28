@@ -554,9 +554,9 @@ $(document).ready(function() {
 	})
 
 	$(".confirmWindow button.danger").click(function() {
+		loading(".confirmWindow button.danger",$(".confirmWindow button.danger").text());
 		if($("#contactList").length) {
 			id = $(this).attr('data-id');
-			loading(".confirmWindow button.danger",$(".confirmWindow button.danger").text());
 
 			$.post("responses/excludeContact.php",{id:id},function(response) {
 				loading(".confirmWindow button.danger");
@@ -564,6 +564,21 @@ $(document).ready(function() {
 					notification("Contato e mensagens apagadas com sucesso.",true);
 					$("#contactList tr[data-id="+id+"]").remove();
 					$(".confirmWindow .close").click();
+				}
+				else {
+					notification(response.message);
+				}
+			})
+		}
+		else if($("#enterpriseDetails:visible")) {
+			id = $("#enterpriseDetails #enterpriseId").val();
+			$.post("responses/deleteEnterprise.php",{id:id},function(response) {
+				loading(".confirmWindow button.danger");
+				if(response.status==true) {
+					$(".confirmWindow a.close").click();
+					$("#enterpriseDetails").fadeOut();
+					$(".homeOptions .option[data-id="+id+"]").remove();
+					notification("Empresa Excluída com Sucesso",true);
 				}
 				else {
 					notification(response.message);
@@ -644,6 +659,15 @@ function loadHome() {
 				$("#enterpriseDetails #"+id).addClass("active");
 				$("#enterpriseDetails #"+id).show();
 			}
+		})
+
+		$("#enterpriseDetails .danger").click(function() {
+			enterpriseNome = $("#enterpriseDetails h1").text();
+			$("body>*:not(.confirmWindow)").addClass("blur");
+			$(".confirmWindow").fadeIn();
+			$(".confirmWindow").css({display:'flex'});
+			$(".confirmWindow p strong").text(enterpriseNome);
+			$(".confirmWindow .aviso").text("Essa ação irá excluir essa empresa, seus contatos e todas as suas mensagens.");
 		})
 	})
 
