@@ -3,3 +3,4 @@
 includes/Crud/bdConnection.php
 includes/Payment/Payment.php
 includes/EmailSender/email.php
+.htaccess
