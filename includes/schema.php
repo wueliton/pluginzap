@@ -235,12 +235,12 @@
 				"position": 1, 
 				"name": <?=json_encode($nomeEmpresa)?>,
 				"item": "<?=$url?>"
-			},{
+			},<?php if(isset($blog)) { ?>{
 				"@type": "ListItem",
 				"position": 2,
-				"name": "Mapa Site",
-				"item": "<?=$url?>mapa-site"
-			},{
+				"name": "Blog",
+				"item": "<?=$url?>blog/"
+			},<?php } ?>{
 				"@type": "ListItem",
 				"position": 3,
 				"name": <?=json_encode($title)?>,

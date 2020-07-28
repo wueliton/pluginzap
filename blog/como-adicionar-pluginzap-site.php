@@ -3,6 +3,7 @@ $title = "Como Adicionar o PluginZap em meu Site?";
 $cssFiles = "../source/css/blog.css";
 $description = "O PluginZap pode ser adicionado ao seu Site HTML, Wordpress, Wix, PHP, e outras linguagens, ensinamos nesse tutorial a inserir em seu site.";
 $keywords = "Melhor plugin em {$title},Melhor aplicativo em {$title},Adicionar o WhatsApp em meu Site,Melhor preço de {$title}";
+$blog = "";
 include("../includes/headerBlog.php");
 ?>
 <nav>

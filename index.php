@@ -1,8 +1,8 @@
 <?php
-$title = "Não perca mais nenhuma";
+$title = "Não perca mais nenhuma mensagem";
 $cssFiles = "source/css/home.css";
-$description = "";
-$keywords = "";
+$description = "PluginZap é uma ferramenta de captura de contatos completa! Não perca nenhuma mensagem enviada em seu Site, acesse sua lista de contatos e muito mais!";
+$keywords = "Adicione o WhatsApp em seu Site,Plugin WhatsApp, Plugin Wordpress WhatsApp, WhatsApp Web, Receber mensagens WhatsApp, Vender pelo WhatsApp";
 include("includes/head.php");
  ?>
 <body>
