@@ -387,6 +387,15 @@ footer .copyright {
   text-align: center;
 }
 
+@media (max-width: 1150px) {
+  nav ul {text-align: center;overflow:hidden;width: 100%;max-height: 0px;}
+  nav ul.active {animation:toggleMenu 1.3s forwards;}
+  nav li {display: block;padding:15px 0px;}
+  nav li a.btn-testar {display: inline-block;}
+  nav .toggle-nav {background: transparent;float: right;margin-top: -10px;margin-right: -10px;display: block;padding:5px;}
+  nav .toggle-nav img {max-height: 30px}
+}
+
 @media (max-width: 899px) {
   *{
     grid-template-columns: 1fr!important;
@@ -396,12 +405,6 @@ footer .copyright {
     display: inline-block;
     margin: 0px auto;
   }
-  nav ul {text-align: center;overflow:hidden;width: 100%;max-height: 0px;}
-  nav ul.active {animation:toggleMenu 1.3s forwards;}
-  nav li {display: block;padding:15px 0px;}
-  nav li a.btn-testar {display: inline-block;}
-  nav .toggle-nav {background: transparent;float: right;margin-top: -10px;margin-right: -10px;display: block;padding:5px;}
-  nav .toggle-nav img {max-height: 30px}
   .painel {padding: 40px 15px;}
   .complete {
     padding: 0px 30px 60px 30px;
