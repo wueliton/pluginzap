@@ -100,37 +100,42 @@ class User {
     function logon($email,$senha) {
         $email = str_replace(" ","",$email);
 
-        $data = $this->bdConnection->select($this->table,array("email"=>$email),"senha,id,preApprovalCode,verificationcode");
+        $data = $this->bdConnection->select($this->table,array("email"=>$email),"senha,id,preApprovalCode,verificationcode,plano");
 
         if(!empty($data)) {
             if($data["verificationcode"]=="verified") {
-                if(password_verify($senha,$data["senha"])) {
-                    $signatureStatus = new \Includes\Payment\Payment();
-                    $signatureStatus->getMemberShip($data['preApprovalCode']);
-                    $signature = $signatureStatus->getCallback();
-    
-                    if($signature->status=="PAYMENT_METHOD_CHANGE") {
-                        $actualDate = new \DateTime();
-                        $actualDate = $actualDate->getTimestamp();
-    
-                        $_SESSION["id_usuario"] = $data["id"];
-                        $_SESSION["time_session"] = $actualDate;
-                        $_SESSION["signature"] = $signature->status;
-                        
-                        echo \json_response(200,"Login realizado com sucesso");
+                if($data["plano"]!=0) {
+                    if(password_verify($senha,$data["senha"])) {
+                        $signatureStatus = new \Includes\Payment\Payment();
+                        $signatureStatus->getMemberShip($data['preApprovalCode']);
+                        $signature = $signatureStatus->getCallback();
+        
+                        if($signature->status=="PAYMENT_METHOD_CHANGE") {
+                            $actualDate = new \DateTime();
+                            $actualDate = $actualDate->getTimestamp();
+        
+                            $_SESSION["id_usuario"] = $data["id"];
+                            $_SESSION["time_session"] = $actualDate;
+                            $_SESSION["signature"] = $signature->status;
+                            
+                            echo \json_response(200,"Login realizado com sucesso");
+                        }
+                        else {
+                            $actualDate = new \DateTime();
+                            $actualDate = $actualDate->getTimestamp();
+        
+                            $_SESSION["id_usuario"] = $data["id"];
+                            $_SESSION["time_session"] = $actualDate;
+                            
+                            echo \json_response(200,"Login realizado com sucesso");
+                        }
                     }
                     else {
-                        $actualDate = new \DateTime();
-                        $actualDate = $actualDate->getTimestamp();
-    
-                        $_SESSION["id_usuario"] = $data["id"];
-                        $_SESSION["time_session"] = $actualDate;
-                        
-                        echo \json_response(200,"Login realizado com sucesso");
+                        echo \json_response(400,array("id"=>2,"msg"=>"Senha incorreta."));
                     }
                 }
                 else {
-                    echo \json_response(400,array("id"=>2,"msg"=>"Senha incorreta."));
+                    echo \json_response(400,"Você ainda não selecionou um plano, selecione um plano para continuar.");
                 }
             }
             else {
