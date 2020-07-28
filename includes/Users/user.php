@@ -100,7 +100,7 @@ class User {
     function logon($email,$senha) {
         $email = str_replace(" ","",$email);
 
-        $data = $this->bdConnection->select($this->table,array("email"=>$email),"senha,id,preApprovalCode,verificationcode,plano");
+        $data = $this->bdConnection->select($this->table,array("email"=>$email),"senha,id,preApprovalCode,verificationcode,plano,nome");
 
         if(!empty($data)) {
             if($data["verificationcode"]=="verified") {
@@ -140,9 +140,11 @@ class User {
                     $dataCode = base64_encode($actualDate."|".$email);
                     $dataCode = str_replace("=","",$dataCode);
 
-                    header("Location: getstart?{$dataCode}");
+                    $emailSender = new \Includes\EmailSender\email();
 
-                    echo \json_response(400,"Você ainda não selecionou um plano, selecione um plano para continuar.");
+                    if($emailSender->sendJoin($email,$data["nome"],"chooseplan",$dataCode,"Escolha um Plano")){
+                        echo \json_response(400,"Você ainda não selecionou um plano, enviamos um email para que você possa selecionar.");
+                    }
                 }
             }
             else {
