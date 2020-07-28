@@ -116,7 +116,7 @@ include("includes/head.php");
 				<img src="source/images/logo.png" alt="">
 			</div>
 			<div class="links-map">
-				<a href="#functionalities">Funcionalidades</a> <a href="join">Assinatura</a> <a href="#how-to">Integração</a> <a href="#support">Suporte</a> <a href="#">Login</a> <a href="#">Cadastre-se</a>
+				<a href="#functionalities">Funcionalidades</a> <a href="join">Assinatura</a> <a href="#how-to">Integração</a> <a href="#support">Suporte</a> <a href="#">Login</a> <a href="#">Cadastre-se</a> <a href="blog/">Blog</a>
 			</div>
 		</div>
 		<div class="container copyright">
