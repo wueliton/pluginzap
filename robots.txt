@@ -1,0 +1,37 @@
+User-agent: Googlebot 
+User-agent: Googlebot-Mobile 
+User-agent: Googlebot-Image 
+User-agent: Mediapartners-Google 
+User-agent: Adsbot-Google 
+User-agent: BingBot 
+User-agent: Yahoo! Slurp 
+User-agent: Alexa 
+User-agent: Pagerank 
+User-agent: Ping 
+User-agent: ia_archiver 
+
+User-agent: Googlebot 
+Disallow: 
+User-agent: Slurp 
+Disallow: 
+User-agent: MSNBot 
+Disallow: 
+User-agent: Googlebot-Image 
+Disallow: 
+User-agent: yahoo-mmcrawler 
+Disallow: 
+User-agent: psbot 
+Disallow: 
+User-agent: * 
+Disallow: 
+
+Allow: https://www.pluginzap.com/
+Allow: /login
+Allow: /join
+Allow: /blog/
+Allow: /index
+Allow: /recover
+Allow: /blog/como-adicionar-pluginzap-site
+Allow: /como-vender-whatsapp
+
+Sitemap: https://www.pluginzap.com/sitemap.xml

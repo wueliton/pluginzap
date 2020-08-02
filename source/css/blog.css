@@ -1,236 +1,238 @@
-@import url('https://fonts.googleapis.com/css2?family=Muli:wght@200;400;700;900&display=swap');
-* {
-    margin: 0px;
-    padding: 0px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
-  }
-  
-  body {
-    font-family: 'Muli', sans-serif;
-    font-size: 1.0em;
-    background: #FFF;
-    font-weight: 400;
-    color: #333;
-  }
-  button,.btn-primary {
-    padding: 15px 30px;
-    background: #25D366;
-    color: white;
-    border-radius: 25px;
-    display: inline-block;
-    transition: box-shadow 0.5s, background 0.5s;
-    border: 0px;
-    cursor: pointer;
-  }
-  button:hover,.btn-primary:hover {
-    background: #00BA85;
-    box-shadow: 0px 15px 20px -15px #68EDCB;
-  }
-  .btn-primary:hover,.btn-testar:hover {
-    background: #00BA85;
-    box-shadow: 0px 15px 20px -15px #68EDCB;
-  }
-  .btn-testar {
-    background: #25D366;
-    color: white;
-    border-radius: 30px;
-    transition: box-shadow 0.5s, background 0.5s;
-  }
-  nav {
-      padding: 15px 25px;
-      width: 100%;
-  }
-  nav ul {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      justify-content: space-between;
-  }
-  nav ul li {
-      display: inline-block;
-  }
-  nav ul li a.blog {
-        padding: 20px 15px;
-        color: #00818F;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 15px;
-        float: right;
-  }
-  nav ul>ul {
-    align-self: center;
-    align-items: flex-end;
-  }
-  nav ul>ul a {
-    padding: 20px 15px;
-    color: #00818F;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 15px;
-  }
-  .principal-image {
-      display: block;
-      margin: auto;
-      max-width: 100%;
-      z-index: 1;
-      position: relative;
-      border-radius: 5px;
-  }
-  article {
-      max-width: 1100px;
-      display: block;
-      margin: auto;
-      background: white;
-  }
-  article .content {
-      padding: 60px;
-      background: white;
-      border-radius: 10px;
-      margin-top: -100px;
-      z-index: 2;
-      position: relative;
-  }
-  article .postDetails {
-      display: block;
-      padding: 30px 0px;
-  }
-  article h1,h2 {
-    font-size: 2.6em;
-    color: #2F4858;
-    font-weight: 900;
-    line-height: 40px;
-    letter-spacing: -2px;
-  }
-  article h2 {
-      font-size: 2.0em;
-      margin-bottom: 20px;
-      margin-top: 40px;
-  }
-  article .category {
-      font-size: 10pt;
-      display: inline-block;
-      padding: 5px 15px;
-      background: #25D366;
-      border-radius: 30px;
-      color: white;
-  }
-  article .date {
-      color: #999;
-  }
-  article .date a {
-      color: #00AFC3;
-  }
-  article p {
-      font-size: 16pt;
-      letter-spacing: .5px;
-      line-height: 1.5;
-      margin-bottom: 25px;
-  }
-  article .content img {
-      display: block;
-      max-width: 100%;
-      margin: auto;
-      margin-bottom: 20px;
-      border-radius: 5px;
-  }
-  article .content ul,article .content ol {
-      margin-left: 30px;
-      font-size: 14pt;
-  }
-  article .content ol {
-      margin-bottom: 30px;
-  }
-  div.assine {
-      display: block;
-      padding: 60px;
-      border-radius: 3px;
-      background-image: -webkit-linear-gradient(top right, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
-      background-image: -o-linear-gradient(top right, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
-      background-image: linear-gradient(to bottom left, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
-      margin-top: 100px;
-      position: relative;
-      overflow: hidden;
-  }
-  div.assine img {
-      position: absolute;
-      right: 0px;
-      top: 20px;
-  }
-  div.assine h2 {
-      color: white;
-      max-width: 600px;
-      margin: 0px;
-      margin-bottom: 30px;
-  }
-
-  .codeWindow {
-      display: block;
-      padding: 20px;
-      border-radius: 5px;
-      position: relative;
-      font-size: 12pt;
-      margin-bottom: 20px;
-      background: #F2F2F2;
-  }
-  .codeWindow .fileName {
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      margin-top: -15px;
-      margin-left: 20px;
-      background: white;
-      padding: 4px 15px;
-      border-radius: 5px;
-  }
-  .codeWindow .destaq {
-      background: rgba(0, 175, 195,0.2);
-  }
-  .posts {
-      max-width: 700px;
-      padding: 30px;
-      display: block;
-      margin: auto;
-  }
-  .posts article p {
-      margin-bottom: 30px;
-  }
-  .posts h1 a {
-      color: #2F4858;
-  }
-
-  footer {
-      padding: 40px;
-      text-align: center;
-      font-size: 8pt;
-  }
-
-  @media(max-width: 700px) {
-      article {
-          margin: 10px;
-      }
-      article .content {
-          padding: 20px 10px;
-          margin-top: -40px;
-      }
-      .assine h2 {
-          font-size: 20pt;
-          line-height: 21pt;
-      }
-      div.assine img {
-          display: none;
-      }
-      nav ul>ul {
-          display: none;
-      }
-      div.assine {
-          padding: 35px;
-      }
-
-      .posts h1 {
-          font-size: 25pt;
-      }
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@200;400;700;900&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+  }
+  
+  body {
+    font-family: 'Muli', sans-serif;
+    font-size: 1.0em;
+    background: #FFF;
+    font-weight: 400;
+    color: #333;
+  }
+  button,.btn-primary {
+    padding: 15px 30px;
+    background: #25D366;
+    color: white;
+    border-radius: 25px;
+    display: inline-block;
+    transition: box-shadow 0.5s, background 0.5s;
+    border: 0px;
+    cursor: pointer;
+  }
+  button:hover,.btn-primary:hover {
+    background: #00BA85;
+    box-shadow: 0px 15px 20px -15px #68EDCB;
+  }
+  .btn-primary:hover,.btn-testar:hover {
+    background: #00BA85;
+    box-shadow: 0px 15px 20px -15px #68EDCB;
+  }
+  .btn-testar {
+    background: #25D366;
+    color: white;
+    border-radius: 30px;
+    transition: box-shadow 0.5s, background 0.5s;
+  }
+  nav {
+      padding: 15px 25px;
+      width: 100%;
+  }
+  nav ul {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  nav ul li {
+      display: inline-block;
+  }
+  nav ul li a.blog {
+        padding: 20px 15px;
+        color: #00818F;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 15px;
+        float: right;
+  }
+  nav ul>ul {
+    align-self: center;
+    align-items: flex-end;
+  }
+  nav ul>ul a {
+    padding: 20px 15px;
+    color: #00818F;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .principal-image {
+      display: block;
+      margin: auto;
+      max-width: 100%;
+      z-index: 1;
+      position: relative;
+      border-radius: 5px;
+  }
+  article {
+      max-width: 1100px;
+      display: block;
+      margin: auto;
+      background: white;
+      margin-bottom: 80px;
+  }
+  article .content {
+      padding: 60px;
+      background: white;
+      border-radius: 10px;
+      margin-top: -100px;
+      z-index: 2;
+      position: relative;
+  }
+  article .postDetails {
+      display: block;
+      padding: 30px 0px;
+  }
+  article h1,h2 {
+    font-size: 2.6em;
+    color: #2F4858;
+    font-weight: 900;
+    line-height: 40px;
+    letter-spacing: -2px;
+  }
+  article h2 {
+      font-size: 2.0em;
+      margin-bottom: 20px;
+      margin-top: 40px;
+  }
+  article .category {
+      font-size: 10pt;
+      display: inline-block;
+      padding: 5px 15px;
+      background: #25D366;
+      border-radius: 30px;
+      color: white;
+  }
+  article .date {
+      color: #999;
+  }
+  article .date a {
+      color: #00AFC3;
+  }
+  article p {
+      font-size: 16pt;
+      letter-spacing: .5px;
+      line-height: 1.5;
+      margin-bottom: 25px;
+  }
+  article .content img {
+      display: block;
+      max-width: 100%;
+      margin: auto;
+      margin-bottom: 20px;
+      border-radius: 5px;
+  }
+  article .content ul,article .content ol {
+      margin-left: 30px;
+      font-size: 14pt;
+  }
+  article .content ol {
+      margin-bottom: 30px;
+  }
+  div.assine {
+      display: block;
+      padding: 60px;
+      border-radius: 3px;
+      background-image: -webkit-linear-gradient(top right, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
+      background-image: -o-linear-gradient(top right, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
+      background-image: linear-gradient(to bottom left, #00afc3, #00aacb, #00a5d3, #009fd9, #0098dd);
+      margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+  }
+  div.assine img {
+      position: absolute;
+      right: 0px;
+      top: 20px;
+  }
+  div.assine h2 {
+      color: white;
+      max-width: 600px;
+      margin: 0px;
+      margin-bottom: 30px;
+  }
+
+  .codeWindow {
+      display: block;
+      padding: 20px;
+      border-radius: 5px;
+      position: relative;
+      font-size: 12pt;
+      margin-bottom: 20px;
+      background: #F2F2F2;
+  }
+  .codeWindow .fileName {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      margin-top: -15px;
+      margin-left: 20px;
+      background: white;
+      padding: 4px 15px;
+      border-radius: 5px;
+  }
+  .codeWindow .destaq {
+      background: rgba(0, 175, 195,0.2);
+  }
+  .posts {
+      max-width: 700px;
+      padding: 30px;
+      display: block;
+      margin: auto;
+  }
+  .posts article p {
+      margin-bottom: 30px;
+  }
+  .posts h1 a {
+      color: #2F4858;
+  }
+
+  footer {
+      padding: 40px;
+      text-align: center;
+      font-size: 8pt;
+  }
+
+  @media(max-width: 700px) {
+      article {
+          margin: 10px;
+          margin-bottom: 80px;
+      }
+      article .content {
+          padding: 20px 10px;
+          margin-top: -40px;
+      }
+      .assine h2 {
+          font-size: 20pt;
+          line-height: 21pt;
+      }
+      div.assine img {
+          display: none;
+      }
+      nav ul>ul {
+          display: none;
+      }
+      div.assine {
+          padding: 35px;
+      }
+
+      .posts h1 {
+          font-size: 25pt;
+      }
   }

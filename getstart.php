@@ -1,6 +1,8 @@
 <?php
 $title = "Vamos começar";
 $cssFiles = "source/css/getstart.css";
+$description = "";
+$keywords = "";
 include("includes/head.php");
 $pay = new \Includes\Payment\Payment; ?>
 <body>
