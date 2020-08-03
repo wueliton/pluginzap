@@ -9,7 +9,7 @@ for($i=0; $i < count($pastaEPagina); $i++){
 	}
 }
 
-$url = "http://".$_SERVER['HTTP_HOST'].$pastaDominio;
+$url = "https://".$_SERVER['HTTP_HOST'].$pastaDominio;
 $nomeEmpresa = "PluginZap";
 $author = "Wule Agência Digital";
 $slogan = "Não perca mais nenhuma mensagem";
